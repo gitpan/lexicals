@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-lexicals - Create a hash of your 'my' variables
+lexicals - Get a hash of your current 'my' variables
 
 =head1 SYNOPSIS
 

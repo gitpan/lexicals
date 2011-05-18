@@ -1,5 +1,5 @@
 ---
-abstract: "Create a hash of your 'my' variables"
+abstract: "Get a hash of your current 'my' variables"
 author:
   - 'Ingy döt Net <ingy@ingy.net>'
 build_requires:
@@ -23,4 +23,4 @@ requires:
   perl: 5.005008
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.11
+version: 0.12
