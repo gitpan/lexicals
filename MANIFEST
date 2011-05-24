@@ -9,6 +9,7 @@ inc/Module/Install/Package.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 inc/Module/Package.pm
+lexicals-0.14.tar.gz
 lib/lexicals.pm
 lib/lexicals.pod
 Makefile.PL
