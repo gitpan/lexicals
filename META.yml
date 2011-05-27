@@ -19,8 +19,9 @@ no_index:
     - inc
     - t
 requires:
-  PadWalker: 0
-  perl: 5.005008
+  Filter::Util::Call: 0
+  PadWalker: 1.92
+  perl: 5.8.3
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.14
+version: 0.15
