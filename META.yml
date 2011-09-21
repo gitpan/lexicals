@@ -23,5 +23,7 @@ requires:
   PadWalker: 1.92
   perl: 5.8.3
 resources:
+  homepage: http://github.com/ingydotnet/lexicals-pm/tree
   license: http://dev.perl.org/licenses/
-version: 0.20
+  repository: git://github.com/ingydotnet/lexicals-pm.git
+version: 0.21

@@ -16,7 +16,7 @@ use strict;
 use Module::Install::Base;
 use vars qw'@ISA $VERSION';
 @ISA = 'Module::Install::Base';
-$VERSION = '0.19';
+$VERSION = '0.28';
 
 #-----------------------------------------------------------------------------#
 # XXX BOOTBUGHACK
@@ -39,6 +39,7 @@ sub package_options {
 my $default_options = {
     deps_list => 1,
     install_bin => 1,
+    install_share => 1,
     manifest_skip => 1,
     requires_from => 1,
 };
@@ -123,6 +124,7 @@ Otherwise, please notify the author of this error.
 # Find and load the author side plugin:
 sub _load_plugin {
     my ($self, $spec) = @_;
+    $spec ||= '';
     my $version = '';
     $Module::Package::plugin_version = 0;
     if ($spec =~ s/\s+(\S+)\s*//) {
@@ -130,7 +132,7 @@ sub _load_plugin {
         $Module::Package::plugin_version = $version;
     }
     my ($module, $plugin) =
-        not(defined $spec) ? ('Plugin', "Plugin::basic") :
+        not($spec) ? ('Plugin', "Plugin::basic") :
         ($spec =~ /^\w(\w|::)*$/) ? ($spec, $spec) :
         ($spec =~ /^:(\w+)$/) ? ('Plugin', "Plugin::$1") :
         ($spec =~ /^(\S*\w):(\w+)$/) ? ($1, "$1::$2") :
@@ -159,6 +161,7 @@ sub _final {
     $self->_all_from;
     $self->_requires_from;
     $self->_install_bin;
+    $self->_install_share;
     $self->_WriteAll;
 }
 
@@ -180,7 +183,7 @@ my $requires_from = 0;
 sub _requires_from {
     my $self = shift;
     return if $requires_from++;
-    return if $self->requires and @{$self->requires};
+    return unless $self->package_options->{requires_from};
     my $file = shift || "$main::PM" or die "requires_from has no file";
     $self->requires_from($main::PM)
 }
@@ -197,6 +200,15 @@ sub _install_bin {
         push @bin, $File::Find::name;
     }, 'bin');
     $self->install_script($_) for @bin;
+}
+
+my $install_share = 0;
+sub _install_share {
+    my $self = shift;
+    return if $install_share++;
+    return unless $self->package_options->{install_share};
+    return unless -d 'share';
+    $self->install_share;
 }
 
 my $WriteAll = 0;
@@ -217,22 +229,38 @@ use overload '""' => sub {
 };
 sub set { $_[0]->[0] = $_[1] }
 sub guess_pm {
-    my $self = shift;
-    require File::Find;
     my $pm = '';
-    my $high = 999999;
-    File::Find::find(sub {
-        return unless /\.pm$/;
-        my $name = $File::Find::name;
-        my $num = ($name =~ s!/+!/!g);
-        if ($num < $high) {
-            $high = $num;
-            $pm = $name;
-        }
-    }, 'lib');
+    my $self = shift;
+    if (-e 'META.yml') {
+        open META, 'META.yml' or die "Can't open 'META.yml' for input:\n$!";
+        my $meta = do { local $/; <META> };
+        close META;
+        $meta =~ /^module_name: (\S+)$/m
+            or die "Can't get module_name from META.yml";
+        $pm = $1;
+        $pm =~ s!::!/!g;
+        $pm = "lib/$pm.pm";
+    }
+    else {
+        require File::Find;
+        my @array = ();
+        File::Find::find(sub {
+            return unless /\.pm$/;
+            my $name = $File::Find::name;
+            my $num = ($name =~ s!/+!/!g);
+            my $ary = $array[$num] ||= [];
+            push @$ary, $name;
+        }, 'lib');
+        shift @array while @array and not defined $array[0];
+        die "Can't guess main module" unless @array;
+        (($pm) = sort @{$array[0]}) or
+            die "Can't guess main module";
+    }
+    my $pmc = $pm . 'c';
+    $pm = $pmc if -e $pmc;
     $self->set($pm);
 }
-$main::PM = bless [], __PACKAGE__;
+$main::PM = bless [$main::PM ? ($main::PM) : ()], __PACKAGE__;
 
 package Module::Package::POD;
 use overload '""' => sub {
@@ -241,7 +269,7 @@ use overload '""' => sub {
     return -e $pod ? $pod : '';
 };
 sub set { $_[0][0] = $_[1] }
-$main::POD = bless [], __PACKAGE__;
+$main::POD = bless [$main::POD ? ($main::POD) : ()], __PACKAGE__;
 
 1;
 
