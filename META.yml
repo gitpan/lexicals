@@ -1,29 +1,28 @@
 ---
 abstract: "Get a hash of your current 'my' variables"
 author:
-  - 'Ingy döt Net <ingy@ingy.net>'
-build_requires:
-  ExtUtils::MakeMaker: 6.42
+  - 'Ingy döt Net <ingy@cpan.org>'
+build_requires: {}
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 1.01'
+  ExtUtils::MakeMaker: '6.30'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
-module_name: lexicals
+  version: '1.4'
 name: lexicals
 no_index:
   directory:
     - inc
     - t
     - xt
+    - example
 requires:
-  PadWalker: 1.92
-  perl: 5.8.3
+  PadWalker: '1.92'
+  perl: v5.8.1
 resources:
-  homepage: http://github.com/ingydotnet/lexicals-pm/tree
-  license: http://dev.perl.org/licenses/
-  repository: git://github.com/ingydotnet/lexicals-pm.git
-version: 0.21
+  bugtracker: https://github.com/ingydotnet/lexicals-pm/issues
+  homepage: https://github.com/ingydotnet/lexicals-pm
+  repository: https://github.com/ingydotnet/lexicals-pm.git
+version: '0.22'

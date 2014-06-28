@@ -1,67 +1,47 @@
----
-version: 0.21
-date:    Thu Sep 22 00:00:30 CEST 2011
-changes:
-- Minor tweaks.
-- Released from Liz++ and Wendy++'s fitness room. On the upper body machine!
----
-version: 0.20
-date:    Tue May 31 20:35:50 EST 2011
-changes:
-- Rerelease with Module::Package 0.19
-- Change Makefile.PL to new call style.
----
-version: 0.19
-date:    Mon May 30 15:24:04 EST 2011
-changes:
-- Rerelease with Module::Package 0.17
-- 3rd time's a charm
----
-version: 0.18
-date:    Sun May 29 23:57:43 EST 2011
-changes:
-- Rerelease with Module::Package 0.16
----
-version: 0.17
-date:    Sat May 28 16:22:02 EST 2011
-changes:
-- Rerelease with Module::Package 0.14
----
-version: 0.16
-date:    Sat May 28 03:43:09 EST 2011
-changes:
-- Didn't need Test::Base
----
-version: 0.15
-date:    Sat May 28 03:38:55 EST 2011
-changes:
-- Use Module::Package
----
-version: 0.14
-date:    Mon May 23 17:55:50 EST 2011
-changes:
-- Use requires_from in Makefile.PL
-- Fix warning in test.
----
-version: 0.13
-date:    Thu May 19 00:01:18 EST 2011
-changes:
-- Support hashes, arrays, and nested refs properly
-- Thanks to rafl++ and rjbs++ for pointing out the bugs
----
-version: 0.12
-date:    Wed May 18 15:18:27 EST 2011
-changes:
-- Use Module::Package
----
-version: 0.11
-date:    Mon May 16 22:16:38 EST 2011
-changes:
-- requires PadWalker
-- inc::Package
-- stardoc_clean_pod
----
-version: 0.10
-date:    Mon May 16 22:16:38 EST 2011
-changes:
-- First Release
+0.22 Fri Jun 27 21:19:32 PDT 2014
+ - Switch to Zilla::Dist and cleanup
+
+0.21 Thu Sep 22 00:00:30 CEST 2011
+ - Minor tweaks.
+ - Released from Liz++ and Wendy++'s fitness room. On the upper body
+   machine!
+
+0.20 Tue May 31 20:35:50 EST 2011
+ - Rerelease with Module::Package 0.19
+ - Change Makefile.PL to new call style.
+
+0.19 Mon May 30 15:24:04 EST 2011
+ - Rerelease with Module::Package 0.17
+ - 3rd time's a charm
+
+0.18 Sun May 29 23:57:43 EST 2011
+ - Rerelease with Module::Package 0.16
+
+0.17 Sat May 28 16:22:02 EST 2011
+ - Rerelease with Module::Package 0.14
+
+0.16 Sat May 28 03:43:09 EST 2011
+ - Didn't need Test::Base
+
+0.15 Sat May 28 03:38:55 EST 2011
+ - Use Module::Package
+
+0.14 Mon May 23 17:55:50 EST 2011
+ - Use requires_from in Makefile.PL
+ - Fix warning in test.
+
+0.13 Thu May 19 00:01:18 EST 2011
+ - Support hashes, arrays, and nested refs properly
+ - Thanks to rafl++ and rjbs++ for pointing out the bugs
+
+0.12 Wed May 18 15:18:27 EST 2011
+ - Use Module::Package
+
+0.11 Mon May 16 22:16:38 EST 2011
+ - requires PadWalker
+ - inc::Package
+ - stardoc_clean_pod
+
+0.10 Mon May 16 22:16:38 EST 2011
+ - First Release
+
