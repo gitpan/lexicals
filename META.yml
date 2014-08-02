@@ -25,4 +25,4 @@ resources:
   bugtracker: https://github.com/ingydotnet/lexicals-pm/issues
   homepage: https://github.com/ingydotnet/lexicals-pm
   repository: https://github.com/ingydotnet/lexicals-pm.git
-version: '0.25'
+version: '0.26'
