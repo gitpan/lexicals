@@ -9,8 +9,8 @@ Makefile.PL
 README
 lib/lexicals.pm
 lib/lexicals.pod
+t/_devel/module-package-user-install-ok.t_
 t/common.yaml
 t/release-pod-syntax.t
 t/test.t
 t/type.t
-xt/module-package-user-install-ok.t
