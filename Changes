@@ -1,3 +1,7 @@
+0.30 Fri Aug 15 16:01:53 PDT 2014
+ - Add t/000-compile-modules.t
+ - CPAN Day 2014 - 21 Release Salute!
+
 0.29 Fri Aug 15 13:55:47 PDT 2014
  - Timed Zilla-Dist Massive Attack test II
 
