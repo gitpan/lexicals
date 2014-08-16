@@ -77,7 +77,7 @@ DEBUGGING TRICK
             ...
         }
 
-SEE
+SEE ALSO
     *   PadWalker
 
     *   Acme::Locals
