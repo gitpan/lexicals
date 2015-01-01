@@ -1,26 +1,26 @@
-NAME
+Name
     lexicals - Get a hash of your current 'my' variables
 
-SYNOPSIS
+Synopsis
         use Template::Toolkit::Simple;
         use lexicals;
 
         sub mail {
-            my $self = shift;
-            my $name = 'Mr. ' . $self->get_name;
-            my $address = $self->fetch_address($name);
-            my $stamp = Postage::Stamp->new(0.44);
-            my $envelope = tt->render('envelope', lexicals);
+          my $self = shift;
+          my $name = 'Mr. ' . $self->get_name;
+          my $address = $self->fetch_address($name);
+          my $stamp = Postage::Stamp->new(0.44);
+          my $envelope = tt->render('envelope', lexicals);
         }
 
-DESCRIPTION
+Description
     Python has a builtin function called "locals()" that returns the
     lexically scoped variables in a name/value mapping. This is a very
     useful idiom. Instead of needing to create a hash like this:
 
         my $hash = {
-            foo => $foo,
-            bar => $bar,
+          foo => $foo,
+          bar => $bar,
         };
 
     Just say:
@@ -33,7 +33,7 @@ DESCRIPTION
     function returns the lexicals as a hash reference (in scalar or list
     context).
 
-ARRAYS AND HASHES
+Arrays and Hashes
     The above examples deal with lexical scalars. You can also get back
     lexical arrays and hashes. Note: since there is no sigil to tell scalars
     from arrays from hashes, you can't get back a scalar and an array or
@@ -41,13 +41,13 @@ ARRAYS AND HASHES
     Because I said so! (Actually I just used the sort order of the sigils).
 
         sub foo {
-            my %h = ( O => 'HAI' );
-            my @a = [ qw( foo bar baz ) ];
-            my $s = 42;
-            my %x = ( O => 'HAI' );
-            my @x = [ qw( foo bar baz ) ];
-            my $x = 42;
-            print Dump lexicals;
+          my %h = ( O => 'HAI' );
+          my @a = [ qw( foo bar baz ) ];
+          my $s = 42;
+          my %x = ( O => 'HAI' );
+          my @x = [ qw( foo bar baz ) ];
+          my $x = 42;
+          print Dump lexicals;
         }
 
     would yield:
@@ -62,32 +62,32 @@ ARRAYS AND HASHES
         s: 42
         x: 42
 
-NOTE
+Note
     The "lexicals" function only reports the lexical variables variables
     that were defined before where it gets called.
 
-DEBUGGING TRICK
+Debugging Trick
     This could be a handy idiom for debugging:
 
         use XXX;
 
         sub foo {
-            ...
-            XXX lexicals;     # See your lexicals in the nude.
-            ...
+          ...
+          XXX lexicals;     # See your lexicals in the nude.
+          ...
         }
 
-SEE ALSO
+See Also
     *   PadWalker
 
     *   Acme::Locals
 
     *   XXX
 
-AUTHOR
+Author
     Ingy döt Net <ingy@cpan.org>
 
-COPYRIGHT
+Copyright and License
     Copyright 2011-2014. Ingy döt Net.
 
     This program is free software; you can redistribute it and/or modify it
