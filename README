@@ -1,7 +1,7 @@
-Name
+NAME
     lexicals - Get a hash of your current 'my' variables
 
-Synopsis
+SYNOPSIS
         use Template::Toolkit::Simple;
         use lexicals;
 
@@ -13,7 +13,7 @@ Synopsis
           my $envelope = tt->render('envelope', lexicals);
         }
 
-Description
+DESCRIPTION
     Python has a builtin function called "locals()" that returns the
     lexically scoped variables in a name/value mapping. This is a very
     useful idiom. Instead of needing to create a hash like this:
@@ -33,7 +33,7 @@ Description
     function returns the lexicals as a hash reference (in scalar or list
     context).
 
-Arrays and Hashes
+ARRAYS AND HASHES
     The above examples deal with lexical scalars. You can also get back
     lexical arrays and hashes. Note: since there is no sigil to tell scalars
     from arrays from hashes, you can't get back a scalar and an array or
@@ -62,11 +62,11 @@ Arrays and Hashes
         s: 42
         x: 42
 
-Note
+NOTE
     The "lexicals" function only reports the lexical variables variables
     that were defined before where it gets called.
 
-Debugging Trick
+DEBUGGING TRICK
     This could be a handy idiom for debugging:
 
         use XXX;
@@ -77,18 +77,18 @@ Debugging Trick
           ...
         }
 
-See Also
+SEE ALSO
     *   PadWalker
 
     *   Acme::Locals
 
     *   XXX
 
-Author
+AUTHOR
     Ingy döt Net <ingy@cpan.org>
 
-Copyright and License
-    Copyright 2011-2014. Ingy döt Net.
+COPYRIGHT AND LICENSE
+    Copyright 2011-2015. Ingy döt Net.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
